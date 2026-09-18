@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dice Admin</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1>🎲 Admin Panel</h1>
+  <p class="subtitle">Monitor and clear rolls between rounds.</p>
+
+  <div class="card" id="loginCard">
+    <span class="admin-badge">Locked</span>
+    <label for="pwInput">Admin password</label>
+    <input type="password" id="pwInput" placeholder="Enter password" autocomplete="off" />
+    <div class="locked-msg" id="loginError" style="display:none;">Incorrect password.</div>
+    <button class="roll-btn" id="loginBtn">Unlock</button>
+  </div>
+
+  <div class="card" id="adminCard" style="display:none;">
+    <span class="admin-badge">Unlocked</span>
+    <label>Total rolls this round</label>
+    <div class="result-number" id="totalCount" style="margin-bottom:16px;">0</div>
+
+    <button class="danger-btn" id="clearBtn">🗑 Clear All Rolls</button>
+    <div class="status-msg" id="statusMsg"></div>
+  </div>
+
+  <div class="feed-header" id="feedHeader" style="display:none;">
+    <h2>Live Rolls</h2>
+    <span class="feed-count" id="feedCount">0 rolls</span>
+  </div>
+  <div class="feed" id="feed"></div>
+
+  <div class="footer-link"><a href="index.html">&larr; back to player view</a></div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-database-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

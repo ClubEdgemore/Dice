@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Roll the Dice</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1>🎲 Roll the Dice</h1>
+  <p class="subtitle">Enter your name, pick a die, and roll. Everyone's rolls show up live below.</p>
+
+  <div class="card">
+    <label for="nameInput">Your name</label>
+    <input type="text" id="nameInput" maxlength="24" placeholder="e.g. Leah" autocomplete="off" />
+
+    <label>Choose your die</label>
+    <div class="dice-grid" id="diceGrid">
+      <!-- dice buttons injected by app.js -->
+    </div>
+
+    <button class="roll-btn" id="rollBtn">🎲 ROLL</button>
+
+    <div class="result-area" id="resultArea">
+      <div class="die-face" id="dieFace">🎲</div>
+      <div class="result-number" id="resultNumber"></div>
+      <div class="result-label" id="resultLabel"></div>
+    </div>
+  </div>
+
+  <div class="feed-header">
+    <h2>Live Rolls</h2>
+    <span class="feed-count" id="feedCount">0 rolls</span>
+  </div>
+  <div class="feed" id="feed">
+    <div class="empty-state">No rolls yet — be the first!</div>
+  </div>
+
+  <div class="footer-link">Hosted for this session · <a href="admin.html">admin</a></div>
+
+  <!-- Firebase (compat SDK, simplest for static sites) -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-database-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
