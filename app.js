@@ -12,6 +12,43 @@ const DICE = [
   { id: "d20", label: "D20", max: 20 },
 ];
 
+// Each die gets its own silhouette (more sides = rounder), so the icon
+// actually changes when you pick a different die instead of always
+// showing the same cube.
+const DIE_SHAPES = {
+  d4: { sides: 3, rotation: -90 },   // triangle
+  d6: { sides: 4, rotation: 45 },    // square
+  d8: { sides: 4, rotation: -90 },   // diamond
+  d10: { sides: 5, rotation: -90 },  // pentagon
+  d12: { sides: 6, rotation: -90 },  // hexagon
+  d20: { sides: 8, rotation: -90 },  // octagon
+};
+
+function polygonPoints(sides, rotationDeg, cx, cy, r) {
+  const pts = [];
+  for (let i = 0; i < sides; i++) {
+    const angle = ((rotationDeg + (i * 360) / sides) * Math.PI) / 180;
+    const x = cx + r * Math.cos(angle);
+    const y = cy + r * Math.sin(angle);
+    pts.push(`${x.toFixed(1)},${y.toFixed(1)}`);
+  }
+  return pts.join(" ");
+}
+
+function buildDieSvg(diceId) {
+  const shape = DIE_SHAPES[diceId] || DIE_SHAPES.d6;
+  const pts = polygonPoints(shape.sides, shape.rotation, 50, 50, 40);
+  return `
+    <svg viewBox="0 0 100 100" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="${pts}" style="fill:rgba(0,0,0,0.35); stroke:var(--accent); stroke-width:5; stroke-linejoin:round;" />
+    </svg>
+  `;
+}
+
+function updateDieShape() {
+  dieFace.innerHTML = buildDieSvg(selectedDice);
+}
+
 const DEVICE_ID_KEY = "dice_device_id";
 const NAME_KEY = "dice_player_name";
 const DICE_KEY = "dice_selected";
@@ -66,11 +103,13 @@ function renderDiceButtons() {
       selectedDice = d.id;
       localStorage.setItem(DICE_KEY, selectedDice);
       renderDiceButtons();
+      updateDieShape();
     });
     diceGrid.appendChild(btn);
   });
 }
 renderDiceButtons();
+updateDieShape();
 
 // ---- Roll animation + write ----
 let rolling = false;
