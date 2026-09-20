@@ -292,3 +292,116 @@ input[type="text"]:focus, input[type="password"]:focus {
   margin-top: -10px;
   margin-bottom: 14px;
 }
+
+/* Poll: player option list (single column, left-aligned, unlike the 3-col dice grid) */
+.option-list {
+  grid-template-columns: 1fr !important;
+}
+
+.option-btn {
+  text-align: left;
+  padding: 12px 14px;
+}
+
+#writeInRow {
+  margin-bottom: 6px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: none;
+  font-weight: 500;
+  color: var(--text);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+/* Poll: admin option rows */
+.option-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.option-row-input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.35);
+  color: var(--text);
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.option-row-input:focus {
+  border-color: var(--accent);
+}
+
+.remove-option-btn {
+  width: 38px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(239,68,68,0.15);
+  color: #fca5a5;
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.remove-option-btn:hover {
+  background: rgba(239,68,68,0.3);
+}
+
+/* Poll: results bars */
+.bar-row {
+  margin-bottom: 12px;
+}
+
+.bar-row:last-child {
+  margin-bottom: 0;
+}
+
+.bar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+  gap: 10px;
+}
+
+.bar-label {
+  font-weight: 700;
+  font-size: 0.95rem;
+  overflow-wrap: anywhere;
+}
+
+.bar-count {
+  color: var(--muted);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.bar-track {
+  width: 100%;
+  height: 10px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-radius: 6px;
+  transition: width 0.4s ease;
+}

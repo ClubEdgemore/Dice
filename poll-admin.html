@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Poll Admin</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1>📊 Poll Admin</h1>
+  <p class="subtitle">Write a question, add answer options, and publish it live.</p>
+
+  <div class="card" id="loginCard">
+    <span class="admin-badge">Locked</span>
+    <label for="pwInput">Admin password</label>
+    <input type="password" id="pwInput" placeholder="Enter password" autocomplete="off" />
+    <div class="locked-msg" id="loginError" style="display:none;">Incorrect password.</div>
+    <button class="roll-btn" id="loginBtn">Unlock</button>
+  </div>
+
+  <div class="card" id="adminCard" style="display:none;">
+    <span class="admin-badge">Unlocked</span>
+
+    <label for="questionInput">Poll question</label>
+    <input type="text" id="questionInput" maxlength="140" placeholder="e.g. What's your favorite tool?" autocomplete="off" />
+
+    <label>Answer options</label>
+    <div id="optionsContainer"></div>
+    <button type="button" class="dice-btn" id="addOptionBtn" style="width:100%;margin-bottom:16px;">+ Add option</button>
+
+    <label class="checkbox-label">
+      <input type="checkbox" id="allowWriteInCheckbox" checked />
+      Allow write-in answers
+    </label>
+
+    <button class="roll-btn" id="publishBtn" style="margin-top:18px;">🚀 Publish Poll</button>
+    <div class="locked-msg" id="publishHint" style="display:none;">Need a question and at least 2 options.</div>
+
+    <button class="danger-btn" id="clearVotesBtn">🗑 Clear Votes (keep this question)</button>
+    <div class="status-msg" id="statusMsg"></div>
+  </div>
+
+  <div class="feed-header" id="resultsHeader" style="display:none;">
+    <h2>Live Results</h2>
+    <span class="feed-count" id="resultsCount">0 votes</span>
+  </div>
+  <div class="card" id="resultsCard" style="display:none;max-width:720px;">
+    <div id="resultsList"></div>
+  </div>
+
+  <div class="footer-link"><a href="index.html">dice roller</a> · <a href="admin.html">dice admin</a> · <a href="poll.html">poll (player view)</a></div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-database-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="admin-config.js"></script>
+  <script src="poll-admin.js"></script>
+</body>
+</html>

@@ -3,8 +3,7 @@
 // for the security caveat), live roll count/feed, clear button.
 // ============================================================
 
-// CHANGE THIS to your own password before deploying.
-const ADMIN_PASSWORD = "Leah311";
+// ADMIN_PASSWORD now lives in admin-config.js (shared with poll-admin.html).
 
 let db = null;
 try {

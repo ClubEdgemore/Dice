@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Live Poll</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1>📊 Live Poll</h1>
+  <p class="subtitle">Pick an answer, or write your own. Results update live for everyone.</p>
+
+  <div class="card" id="pollCard">
+    <div class="empty-state" id="noPollMsg">No poll is live right now — check back soon.</div>
+
+    <div id="pollBody" style="display:none;">
+      <label>Question</label>
+      <h2 id="questionText" style="margin-top:0;"></h2>
+
+      <div class="dice-grid option-list" id="optionList"></div>
+
+      <div id="writeInRow" style="display:none;">
+        <label for="writeInInput">Or write your own</label>
+        <input type="text" id="writeInInput" maxlength="60" placeholder="Type an answer..." autocomplete="off" />
+      </div>
+
+      <button class="roll-btn" id="submitVoteBtn">Submit Vote</button>
+      <div class="status-msg" id="voteStatus"></div>
+    </div>
+  </div>
+
+  <div class="feed-header">
+    <h2>Live Results</h2>
+    <span class="feed-count" id="resultsCount">0 votes</span>
+  </div>
+  <div class="card" id="resultsCard" style="max-width:720px;">
+    <div id="resultsList"><div class="empty-state">No votes yet.</div></div>
+  </div>
+
+  <div class="footer-link">Hosted for this session · <a href="index.html">dice roller</a></div>
+
+  <!-- Firebase (compat SDK, simplest for static sites) -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-database-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="poll.js"></script>
+</body>
+</html>
